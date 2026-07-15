@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "./Navbar";
 
 function ViewMyPost() {
   const [posts, setPosts] = useState([]);
@@ -30,38 +29,47 @@ function ViewMyPost() {
   }, []);
 
   return (
-    <div>
-      <Navbar />
-      <div className="container mt-4">
-        <h3 className="mb-4">My Posts</h3>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-8">
+          <h2 className="page-title">My Posts</h2>
 
-        {loading ? (
-          <div className="text-center my-5">
-            <div className="spinner-border text-primary" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
-        ) : posts.length === 0 ? (
-          <div className="alert alert-info text-center py-4">
-            You haven't created any posts yet. Click "Add Post" to get started!
-          </div>
-        ) : (
-          <div className="row">
-            {posts.map((val) => (
-              <div className="col-12 mb-3" key={val._id || val.id}>
-                {/* Kept your nice custom left border accent from the original layout! */}
-                <div className="card border-start border-primary border-4 shadow-sm">
-                  <div className="card-body">
-                    <p className="mb-2 text-dark">{val.message}</p>
-                    <div className="text-muted small">
-                      Posted on: {new Date(val.postedOn).toLocaleString()}
-                    </div>
-                  </div>
-                </div>
+          {loading ? (
+            <div className="text-center my-5">
+              <div className="spinner-border text-dark" role="status">
+                <span className="visually-hidden">Loading...</span>
               </div>
-            ))}
-          </div>
-        )}
+            </div>
+          ) : posts.length === 0 ? (
+            <div className="alert alert-info text-center py-4">
+              You haven't created any posts yet. Click "Add Post" to get started!
+            </div>
+          ) : (
+            <div className="d-flex flex-column mb-5">
+              {posts.map((val) => (
+                <div
+                  className="blog-feed-item ps-3 accent-post-card"
+                  key={val._id || val.id}
+                >
+                  <div className="blog-meta">
+                    <span>Published by You</span>
+                    <span>•</span>
+                    <span>
+                      {new Date(val.postedOn).toLocaleString(undefined, {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </span>
+                  </div>
+                  <p className="blog-content">{val.message}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

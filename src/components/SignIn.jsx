@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -39,58 +39,56 @@ function SignIn() {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-4 border rounded p-4 bg-light shadow-sm">
-          <h2 className="mb-4 text-center">Login Portal</h2>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <h2 className="mb-4 text-center">Login Portal</h2>
 
-          {error && (
-            <div className="alert alert-danger p-2 small text-center text-capitalize">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={handleFormSubmit}>
-            <div className="mb-3">
-              <label className="form-label">Email Address</label>
-              <input
-                type="email"
-                required
-                className="form-control"
-                name="email"
-                value={input.email}
-                onChange={inputHandler}
-                placeholder="Enter email"
-              />
-            </div>
-
-            <div className="mb-3">
-              <label className="form-label">Password</label>
-              <input
-                type="password"
-                required
-                className="form-control"
-                name="password"
-                value={input.password}
-                onChange={inputHandler}
-                placeholder="Enter password"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="btn btn-primary w-100 mb-3"
-              disabled={loading}
-            >
-              {loading ? "Signing In..." : "Sign In"}
-            </button>
-          </form>
-
-          <div className="text-center">
-            <Link className="small text-decoration-none" to="/signup">
-              Don't have an account? Sign Up
-            </Link>
+        {error && (
+          <div className="alert alert-danger p-2 small text-center text-capitalize mb-3">
+            {error}
           </div>
+        )}
+
+        <form onSubmit={handleFormSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Email Address</label>
+            <input
+              type="email"
+              required
+              className="form-control"
+              name="email"
+              value={input.email}
+              onChange={inputHandler}
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              required
+              className="form-control"
+              name="password"
+              value={input.password}
+              onChange={inputHandler}
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="btn btn-primary w-100 mb-3"
+            disabled={loading}
+          >
+            {loading ? "Signing In..." : "Sign In"}
+          </button>
+        </form>
+
+        <div className="text-center">
+          <Link className="small text-decoration-none text-secondary" to="/signup">
+            Don't have an account? Sign Up
+          </Link>
         </div>
       </div>
     </div>

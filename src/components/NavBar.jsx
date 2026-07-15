@@ -1,5 +1,4 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -13,10 +12,10 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand navbar-dark bg-dark mb-4">
-      <div className="container-fluid px-3">
+    <nav className="navbar navbar-expand navbar-light bg-white mb-4 py-3">
+      <div className="container px-3">
         <Link
-          className="navbar-brand font-weight-bold"
+          className="navbar-brand fw-bold text-dark fs-4"
           to={isLoggedIn ? "/view-all" : "/"}
         >
           BlogSystem
@@ -25,20 +24,35 @@ function Navbar() {
         {/* Only show navigation and logout buttons if a user is authenticated */}
         {isLoggedIn && (
           <>
-            <div className="navbar-nav me-auto">
-              <Link className="nav-link" to="/create">
+            <div className="navbar-nav me-auto ms-4">
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link px-3 fw-medium ${isActive ? "text-dark active" : "text-secondary"}`
+                }
+                to="/create"
+              >
                 Add Post
-              </Link>
-              <Link className="nav-link" to="/view-all">
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link px-3 fw-medium ${isActive ? "text-dark active" : "text-secondary"}`
+                }
+                to="/view-all"
+              >
                 All Posts
-              </Link>
-              <Link className="nav-link" to="/view-my">
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link px-3 fw-medium ${isActive ? "text-dark active" : "text-secondary"}`
+                }
+                to="/view-my"
+              >
                 My Posts
-              </Link>
+              </NavLink>
             </div>
 
             <button
-              className="btn btn-outline-danger btn-sm px-3"
+              className="btn btn-outline-danger btn-sm px-3 rounded-pill"
               onClick={handleLogout}
             >
               Logout

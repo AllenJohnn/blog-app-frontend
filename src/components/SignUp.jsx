@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -57,96 +57,94 @@ function SignUp() {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6 border rounded p-4 bg-light shadow-sm">
-          <h2 className="mb-4 text-center">Registration</h2>
-          
-          {/* Dynamic alert banner for errors or success */}
-          {message.text && (
-            <div className={`alert alert-${message.type} p-2 small text-center text-capitalize`}>
-              {message.text}
-            </div>
-          )}
-
-          <form onSubmit={handleFormSubmit}>
-            <div className="mb-3">
-              <label className="form-label">Name</label>
-              <input
-                required
-                className="form-control"
-                name="name"
-                value={input.name}
-                onChange={inputHandler}
-                placeholder="Enter full name"
-              />
-            </div>
-            
-            <div className="mb-3">
-              <label className="form-label">Phone</label>
-              <input
-                required
-                className="form-control"
-                name="phone"
-                value={input.phone}
-                onChange={inputHandler}
-                placeholder="Enter phone number"
-              />
-            </div>
-            
-            <div className="mb-3">
-              <label className="form-label">Email</label>
-              <input
-                type="email"
-                required
-                className="form-control"
-                name="email"
-                value={input.email}
-                onChange={inputHandler}
-                placeholder="Enter email address"
-              />
-            </div>
-            
-            <div className="mb-3">
-              <label className="form-label">Password</label>
-              <input
-                type="password"
-                required
-                className="form-control"
-                name="password"
-                value={input.password}
-                onChange={inputHandler}
-                placeholder="Create a password"
-              />
-            </div>
-            
-            <div className="mb-4">
-              <label className="form-label">Confirm Password</label>
-              <input
-                type="password"
-                required
-                className="form-control"
-                name="confirmPassword"
-                value={input.confirmPassword}
-                onChange={inputHandler}
-                placeholder="Repeat password"
-              />
-            </div>
-            
-            <button 
-              type="submit" 
-              className="btn btn-success w-100 mb-3"
-              disabled={loading}
-            >
-              {loading ? "Registering..." : "Register Profile"}
-            </button>
-          </form>
-
-          <div className="text-center">
-            <Link className="small text-decoration-none" to="/">
-              Already have an account? Sign In
-            </Link>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <h2 className="mb-4 text-center">Registration</h2>
+        
+        {/* Dynamic alert banner for errors or success */}
+        {message.text && (
+          <div className={`alert alert-${message.type} p-2 small text-center text-capitalize mb-3`}>
+            {message.text}
           </div>
+        )}
+
+        <form onSubmit={handleFormSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Name</label>
+            <input
+              required
+              className="form-control"
+              name="name"
+              value={input.name}
+              onChange={inputHandler}
+              placeholder="Enter your full name"
+            />
+          </div>
+          
+          <div className="mb-3">
+            <label className="form-label">Phone</label>
+            <input
+              required
+              className="form-control"
+              name="phone"
+              value={input.phone}
+              onChange={inputHandler}
+              placeholder="Enter your phone number"
+            />
+          </div>
+          
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              required
+              className="form-control"
+              name="email"
+              value={input.email}
+              onChange={inputHandler}
+              placeholder="Enter your email address"
+            />
+          </div>
+          
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              required
+              className="form-control"
+              name="password"
+              value={input.password}
+              onChange={inputHandler}
+              placeholder="Create a password"
+            />
+          </div>
+          
+          <div className="mb-4">
+            <label className="form-label">Confirm Password</label>
+            <input
+              type="password"
+              required
+              className="form-control"
+              name="confirmPassword"
+              value={input.confirmPassword}
+              onChange={inputHandler}
+              placeholder="Confirm your password"
+            />
+          </div>
+          
+          <button 
+            type="submit" 
+            className="btn btn-success w-100 mb-3"
+            disabled={loading}
+          >
+            {loading ? "Registering..." : "Register Profile"}
+          </button>
+        </form>
+
+        <div className="text-center">
+          <Link className="small text-decoration-none text-secondary" to="/">
+            Already have an account? Sign In
+          </Link>
         </div>
       </div>
     </div>

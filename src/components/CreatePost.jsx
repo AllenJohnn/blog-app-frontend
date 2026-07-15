@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import Navbar from "./Navbar";
 
 function CreatePost() {
   const [message, setMessage] = useState("");
@@ -47,43 +46,38 @@ function CreatePost() {
   };
 
   return (
-    <div>
-      <Navbar />
-      <div className="container mt-4">
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <h3 className="mb-3">Create New Post</h3>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-8">
+          <h2 className="page-title">Create New Post</h2>
 
-            {status.text && (
-              <div
-                className={`alert alert-${status.type} p-2 small text-center text-capitalize`}
-              >
-                {status.text}
-              </div>
-            )}
-
-            <div className="card p-4 bg-light shadow-sm">
-              <form onSubmit={handleFormSubmit}>
-                <div className="mb-3">
-                  <label className="form-label">What's on your mind?</label>
-                  <textarea
-                    required
-                    className="form-control"
-                    rows="5"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Write your post content here..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn btn-primary px-4"
-                  disabled={loading || !message.trim()}
-                >
-                  {loading ? "Publishing..." : "Publish Post"}
-                </button>
-              </form>
+          {status.text && (
+            <div className={`alert alert-${status.type} p-2 small text-center text-capitalize mb-4`}>
+              {status.text}
             </div>
+          )}
+
+          <div className="minimal-card">
+            <form onSubmit={handleFormSubmit}>
+              <div className="mb-4">
+                <label className="form-label">What's on your mind?</label>
+                <textarea
+                  required
+                  className="form-control"
+                  rows="6"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Write your post content here..."
+                />
+              </div>
+              <button
+                type="submit"
+                className="btn btn-primary px-4"
+                disabled={loading || !message.trim()}
+              >
+                {loading ? "Publishing..." : "Publish Post"}
+              </button>
+            </form>
           </div>
         </div>
       </div>
