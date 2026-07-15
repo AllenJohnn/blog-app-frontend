@@ -6,7 +6,7 @@ function SignIn() {
   const navigate = useNavigate();
   const [input, setInput] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // Prevents duplicate form submissions
+  const [loading, setLoading] = useState(false); 
 
   const inputHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -34,7 +34,7 @@ function SignIn() {
       console.error(err);
       setError("Something went wrong. Please try again.");
     } finally {
-      setLoading(false); // Re-enables the form once the backend responds
+      setLoading(false); 
     }
   };
 

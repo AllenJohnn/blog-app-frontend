@@ -3,12 +3,12 @@ import axios from "axios";
 
 function CreatePost() {
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState({ text: "", type: "" }); // Handles error/success alerts
+  const [status, setStatus] = useState({ text: "", type: "" }); 
   const [loading, setLoading] = useState(false);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (!message.trim()) return; // Don't submit empty posts
+    if (!message.trim()) return; 
 
     setStatus({ text: "", type: "" });
     setLoading(true);
@@ -33,7 +33,7 @@ function CreatePost() {
 
       if (response.data.status === "success") {
         setStatus({ text: "Post created successfully!", type: "success" });
-        setMessage(""); // Clears the textarea after successful post
+        setMessage(""); 
       } else {
         setStatus({ text: response.data.status, type: "danger" });
       }

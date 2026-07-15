@@ -10,11 +10,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public Routes */}
         <Route path="/" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
 
-        {/* Protected Routes (wrapped in Layout) */}
         <Route element={<Layout />}>
           <Route path="/create" element={<CreatePost />} />
           <Route path="/view-all" element={<ViewAll />} />

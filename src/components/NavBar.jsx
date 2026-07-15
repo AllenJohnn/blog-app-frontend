@@ -3,7 +3,6 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 function Navbar() {
   const navigate = useNavigate();
 
-  // Check if the user is currently logged in
   const isLoggedIn = !!sessionStorage.getItem("token");
 
   const handleLogout = () => {
@@ -21,7 +20,6 @@ function Navbar() {
           BlogSystem
         </Link>
 
-        {/* Only show navigation and logout buttons if a user is authenticated */}
         {isLoggedIn && (
           <>
             <div className="navbar-nav me-auto ms-4">

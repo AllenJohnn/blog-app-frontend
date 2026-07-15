@@ -23,7 +23,6 @@ function SignUp() {
     e.preventDefault();
     setMessage({ text: "", type: "" });
 
-    // Validate passwords match before hitting the API
     if (input.password !== input.confirmPassword) {
       setMessage({ text: "Passwords do not match.", type: "danger" });
       return;
@@ -44,7 +43,7 @@ function SignUp() {
         setMessage({ text: "Account created successfully! Redirecting...", type: "success" });
         setTimeout(() => {
           navigate("/");
-        }, 1500); // Gives the user a second to read the success message
+        }, 1500); 
       } else {
         setMessage({ text: response.data.status, type: "danger" });
       }
@@ -61,7 +60,6 @@ function SignUp() {
       <div className="auth-card">
         <h2 className="mb-4 text-center">Registration</h2>
         
-        {/* Dynamic alert banner for errors or success */}
         {message.text && (
           <div className={`alert alert-${message.type} p-2 small text-center text-capitalize mb-3`}>
             {message.text}
